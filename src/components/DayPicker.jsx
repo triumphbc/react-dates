@@ -38,6 +38,7 @@ const MONTH_PADDING = 23;
 const DAY_PICKER_PADDING = 9;
 const PREV_TRANSITION = 'prev';
 const NEXT_TRANSITION = 'next';
+const MONTHYEAR_TRANSITION = 'monthyear';
 
 const propTypes = forbidExtraProps({
   // calendar presentation props
@@ -204,6 +205,8 @@ export default class DayPicker extends React.Component {
       onKeyboardShortcutsPanelClose() {},
       isTouchDevice: isTouchDevice(),
       withMouseInteractions: true,
+      month: moment().format('M'),
+      year: moment().format('YYYY')
     };
 
     this.onKeyDown = this.onKeyDown.bind(this);
@@ -211,6 +214,7 @@ export default class DayPicker extends React.Component {
     this.onNextMonthClick = this.onNextMonthClick.bind(this);
     this.multiplyScrollableMonths = this.multiplyScrollableMonths.bind(this);
     this.updateStateAfterMonthTransition = this.updateStateAfterMonthTransition.bind(this);
+    this.handleChangeMonthYearMenu = this.handleChangeMonthYearMenu.bind(this);
 
     this.openKeyboardShortcutsPanel = this.openKeyboardShortcutsPanel.bind(this);
     this.closeKeyboardShortcutsPanel = this.closeKeyboardShortcutsPanel.bind(this);
@@ -518,6 +522,8 @@ export default class DayPicker extends React.Component {
       focusedDate,
       nextFocusedDate,
       withMouseInteractions,
+      month,
+      year
     } = this.state;
 
     if (!monthTransition) return;
@@ -529,6 +535,8 @@ export default class DayPicker extends React.Component {
     } else if (monthTransition === NEXT_TRANSITION) {
       if (onNextMonthClick) onNextMonthClick();
       newMonth.add(1, 'month');
+    } else if (monthTransition === MONTHYEAR_TRANSITION) {
+      newMonth.set({year, month: month - 1});
     }
 
     let newFocusedDate = null;
@@ -629,6 +637,11 @@ export default class DayPicker extends React.Component {
       isRTL,
     } = this.props;
 
+    const {
+      month,
+      year
+    } = this.state;
+
     let onNextMonthClick;
     if (orientation === VERTICAL_SCROLLABLE) {
       onNextMonthClick = this.multiplyScrollableMonths;
@@ -645,6 +658,9 @@ export default class DayPicker extends React.Component {
         orientation={orientation}
         phrases={phrases}
         isRTL={isRTL}
+        month={month}
+        year={year}
+        onMenuChangeYearMonth={this.handleChangeMonthYearMenu}
       />
     );
   }
@@ -687,6 +703,13 @@ export default class DayPicker extends React.Component {
         </ul>
       </div>
     );
+  }
+
+  handleChangeMonthYearMenu(obj) {
+    obj.monthTransition = MONTHYEAR_TRANSITION;
+    this.setState(obj, () => {
+      this.updateStateAfterMonthTransition();
+    });
   }
 
   render() {

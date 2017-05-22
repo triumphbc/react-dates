@@ -45,6 +45,7 @@ const propTypes = forbidExtraProps({
   daySize: nonNegativeInteger,
   focusedDate: momentPropTypes.momentObj, // indicates focusable day
   isFocused: PropTypes.bool, // indicates whether or not to move focus to focusable day
+  onMenuChangeYearMonth: PropTypes.func,
 
   // i18n
   monthFormat: PropTypes.string,
@@ -116,17 +117,17 @@ export default class CalendarMonthGrid extends React.Component {
     const hasNumberOfMonthsChanged = this.props.numberOfMonths !== numberOfMonths;
     let newMonths = months;
 
-    if (hasMonthChanged && !hasNumberOfMonthsChanged) {
-      if (isAfterDay(initialMonth, this.props.initialMonth)) {
-        newMonths = months.slice(1);
-        newMonths.push(months[months.length - 1].clone().add(1, 'month'));
-      } else {
-        newMonths = months.slice(0, months.length - 1);
-        newMonths.unshift(months[0].clone().subtract(1, 'month'));
-      }
-    }
+    // if (hasMonthChanged && !hasNumberOfMonthsChanged) {
+    //   if (isAfterDay(initialMonth, this.props.initialMonth)) {
+    //     newMonths = months.slice(1);
+    //     newMonths.push(months[months.length - 1].clone().add(1, 'month'));
+    //   } else {
+    //     newMonths = months.slice(0, months.length - 1);
+    //     newMonths.unshift(months[0].clone().subtract(1, 'month'));
+    //   }
+    // }
 
-    if (hasNumberOfMonthsChanged) {
+    if (hasMonthChanged) {
       const withoutTransitionMonths = orientation === VERTICAL_SCROLLABLE;
       newMonths = getMonths(initialMonth, numberOfMonths, withoutTransitionMonths);
     }
