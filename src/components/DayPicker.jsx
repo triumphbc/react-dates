@@ -638,11 +638,6 @@ export default class DayPicker extends React.Component {
       isRTL,
     } = this.props;
 
-    const {
-      month,
-      year
-    } = this.state;
-
     let onNextMonthClick;
     if (orientation === VERTICAL_SCROLLABLE) {
       onNextMonthClick = this.multiplyScrollableMonths;
@@ -659,9 +654,6 @@ export default class DayPicker extends React.Component {
         orientation={orientation}
         phrases={phrases}
         isRTL={isRTL}
-        month={month}
-        year={year}
-        onMenuChangeYearMonth={this.handleChangeMonthYearMenu}
       />
     );
   }

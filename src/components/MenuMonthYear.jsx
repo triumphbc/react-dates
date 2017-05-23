@@ -61,7 +61,7 @@ export default class MenuMonthYear extends React.Component {
       return (<span className="go-to-date">
         {months}
         {years}
-        <button onClick={this.goToToday} type="button">Today</button>
+        {/*<button onClick={this.goToToday} type="button">Today</button>*/}
       </span>);
     }
   }
