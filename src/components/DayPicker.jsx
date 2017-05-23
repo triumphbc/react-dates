@@ -13,6 +13,7 @@ import getPhrasePropTypes from '../utils/getPhrasePropTypes';
 import OutsideClickHandler from './OutsideClickHandler';
 import CalendarMonthGrid from './CalendarMonthGrid';
 import DayPickerNavigation from './DayPickerNavigation';
+import MenuMonthYears from './MenuMonthYear';
 import DayPickerKeyboardShortcuts, {
   TOP_LEFT,
   TOP_RIGHT,
@@ -776,7 +777,7 @@ export default class DayPicker extends React.Component {
 
     // this is a kind of made-up value that generally looks good. we'll
     // probably want to let the user set this explicitly.
-    const verticalHeight = 1.75 * calendarMonthWidth;
+    const verticalHeight = 1.75 * calendarMonthWidth + 50;
 
     const dayPickerStyle = {
       width: this.isHorizontal() && horizontalWidth,
@@ -856,6 +857,13 @@ export default class DayPicker extends React.Component {
               />
               {verticalScrollable && this.renderNavigation()}
             </div>
+
+
+            <MenuMonthYears
+              onMenuChangeYearMonth={this.handleChangeMonthYearMenu}
+              month={this.state.month}
+              year={this.state.year}
+            />
 
             {!isTouch && !hideKeyboardShortcutsPanel &&
               <DayPickerKeyboardShortcuts

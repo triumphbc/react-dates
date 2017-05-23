@@ -41,7 +41,7 @@
 .CalendarMonth__caption {
   color: $react-dates-color-gray-dark;
   margin-top: 7px;
-  font-size: 18px;
+  font-size: 15px;
   text-align: center;
   // necessary to not hide borders in FF
   margin-bottom: 2px;
@@ -50,7 +50,7 @@
 
 .CalendarMonth--horizontal .CalendarMonth__caption,
 .CalendarMonth--vertical .CalendarMonth__caption {
-  padding: 25px 0;
+  padding: 15px 0 25px;
 }
 
 .CalendarMonth--vertical-scrollable .CalendarMonth__caption {

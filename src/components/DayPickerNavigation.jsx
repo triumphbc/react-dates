@@ -11,7 +11,6 @@ import RightArrow from '../svg/arrow-right.svg';
 import ChevronUp from '../svg/chevron-up.svg';
 import ChevronDown from '../svg/chevron-down.svg';
 import ScrollableOrientationShape from '../shapes/ScrollableOrientationShape';
-import MenuMonthYears from './MenuMonthYear';
 
 import {
   HORIZONTAL_ORIENTATION,
@@ -22,10 +21,6 @@ const propTypes = forbidExtraProps({
   navPrev: PropTypes.node,
   navNext: PropTypes.node,
   orientation: ScrollableOrientationShape,
-
-  month: PropTypes.string,
-  year: PropTypes.string,
-  onMenuChangeYearMonth: PropTypes.func,
 
   onPrevMonthClick: PropTypes.func,
   onNextMonthClick: PropTypes.func,
@@ -58,9 +53,6 @@ export default function DayPickerNavigation(props) {
     orientation,
     phrases,
     isRTL,
-    year,
-    month,
-    onMenuChangeYearMonth
   } = props;
 
   const isVertical = orientation !== HORIZONTAL_ORIENTATION;
@@ -114,12 +106,6 @@ export default function DayPickerNavigation(props) {
           {navPrevIcon}
         </button>
       )}
-
-      <MenuMonthYears
-        onMenuChangeYearMonth={onMenuChangeYearMonth}
-        month={month}
-        year={year}
-      />
 
       <button
         type="button"
