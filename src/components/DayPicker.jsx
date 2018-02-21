@@ -940,9 +940,9 @@ class DayPicker extends React.Component {
               </div>
 
               <MenuMonthYears
-                  onMenuChangeYearMonth={this.handleChangeMonthYearMenu}
-                  month={this.state.month}
-                  year={this.state.year}
+                onMenuChangeYearMonth={this.handleChangeMonthYearMenu}
+                month={this.state.month}
+                year={this.state.year}
               />
 
               {!isTouch && !hideKeyboardShortcutsPanel &&
@@ -1028,7 +1028,7 @@ export default withStyles(({ reactDates: { color, font, zIndex } }) => ({
   DayPicker_weekHeader: {
     color: color.placeholderText,
     position: 'absolute',
-    top: 62,
+    top: 50,
     zIndex: zIndex + 2,
     padding: '0 13px',
     textAlign: 'left',

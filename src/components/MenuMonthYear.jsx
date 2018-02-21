@@ -1,8 +1,8 @@
-import React, {PropTypes} from 'react';
-import momentPropTypes from 'react-moment-proptypes';
+import React from 'react';
+import PropTypes from 'prop-types';
 import moment from 'moment';
 
-export default class MenuMonthYear extends React.Component {
+class MenuMonthYear extends React.Component {
   constructor(props) {
     super(props);
 
@@ -42,32 +42,35 @@ export default class MenuMonthYear extends React.Component {
       const monthName = moment(month,"M").format("MMMM");
       options.push(<option key={month} value={month}>{monthName}</option>);
     }
-    return <select onChange={this.onMonthChange} ref="month" value={value} name="month">{options}</select>;
+    return <select style={{width: '90px', marginRight: '5px'}} onChange={this.onMonthChange} ref="month" value={value} name="month">{options}</select>;
   }
 
   renderYears(value) { 
-    return <input onChange={this.onYearChange} ref="year" name="year" />;
+    return <input style={{width: '40px', marginRight: '5px'}} onChange={this.onYearChange} ref="year" name="year" />;
   }
 
-    render() {
-      const {
-        month,
-        year
-      } = this.props;
+  render() {
+    const {
+      month,
+      year
+    } = this.props;
 
-      const months = this.renderMonths(month);
-      const years = this.renderYears(year);
+    const months = this.renderMonths(month);
+    const years = this.renderYears(year);
 
-      return (<span className="go-to-date">
+    return (
+      <span style={ { width: '100%', display: 'flex', justifyContent: 'center', padding: '0 20px 10px' } }>
         {months}
         {years}
-        {/*<button onClick={this.goToToday} type="button">Today</button>*/}
-      </span>);
-    }
+      </span>
+    );
   }
+}
 
 MenuMonthYear.propTypes = {
   month: PropTypes.string,
   year: PropTypes.string,
   onMenuChangeYearMonth: PropTypes.func
 };
+
+export default MenuMonthYear;

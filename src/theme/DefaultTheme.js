@@ -147,7 +147,7 @@ export default {
 
     spacing: {
       captionPaddingTop: 22,
-      captionPaddingBottom: 37,
+      captionPaddingBottom: 25,
       inputPadding: 0,
       displayTextPaddingVertical: undefined,
       displayTextPaddingTop: 13,
@@ -171,8 +171,8 @@ export default {
     },
 
     font: {
-      size: 14,
-      captionSize: 18,
+      size: 12,
+      captionSize: 15,
       input: {
         size: 18,
         lineHeight: '24px',
