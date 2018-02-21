@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment';
-import { storiesOf } from '@kadira/storybook';
+import { storiesOf } from '@storybook/react';
 
 import DateRangePickerWrapper from '../examples/DateRangePickerWrapper';
 
@@ -118,5 +118,36 @@ storiesOf('DRP - Input Props', module)
       initialStartDate={moment().add(3, 'days')}
       initialEndDate={moment().add(10, 'days')}
       screenReaderInputMessage="Here you could inform screen reader users of the date format, minimum nights, blocked out dates, etc"
+    />
+  ))
+  .addWithInfo('noBorder', () => (
+    <DateRangePickerWrapper
+      initialStartDate={moment().add(3, 'days')}
+      initialEndDate={moment().add(10, 'days')}
+      noBorder
+    />
+  ))
+  .addWithInfo('block styling', () => (
+    <DateRangePickerWrapper
+      initialStartDate={moment().add(3, 'days')}
+      initialEndDate={moment().add(10, 'days')}
+      showClearDates
+      block
+    />
+  ))
+  .addWithInfo('small styling', () => (
+    <DateRangePickerWrapper
+      initialStartDate={moment().add(3, 'days')}
+      initialEndDate={moment().add(10, 'days')}
+      showClearDates
+      small
+    />
+  ))
+  .addWithInfo('regular styling', () => (
+    <DateRangePickerWrapper
+      initialStartDate={moment().add(3, 'days')}
+      initialEndDate={moment().add(10, 'days')}
+      showClearDates
+      regular
     />
   ));

@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment';
-import { storiesOf } from '@kadira/storybook';
+import { storiesOf } from '@storybook/react';
 
 import isInclusivelyAfterDay from '../src/utils/isInclusivelyAfterDay';
 import isSameDay from '../src/utils/isSameDay';
@@ -58,7 +58,7 @@ storiesOf('SDP - Day Props', module)
   .addWithInfo('with custom daily details', () => (
     <SingleDatePickerWrapper
       numberOfMonths={1}
-      renderDay={day => day.format('ddd')}
+      renderDayContents={day => day.format('ddd')}
       autoFocus
     />
   ));

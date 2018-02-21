@@ -33,6 +33,8 @@ node_modules
 .node_repl_history
 
 # build folder
+lib
+esm
 .idea
 
 # gh-pages
@@ -40,5 +42,9 @@ _gh-pages
 
 .nyc_output
 
-# committing a yarn lockfile will break tests
+# Only apps should have lockfiles
 yarn.lock
+package-lock.json
+
+css/styles.css
+
